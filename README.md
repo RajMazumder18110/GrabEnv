@@ -36,7 +36,7 @@ yarn add grabenv
 
 ## Usage
 
-Define your environment variables in a `.env` file:
+Define your environment variables in a `.env` or `.env.x` file:
 
 ```bash
 ### Optional ###
@@ -50,7 +50,7 @@ DATABASE_URL=my_database_url
 **Configure and Use GrabEnv** in your `TypeScript/Javascript` application:
 
 ```typescript
-import { grabEnvironments } from "grabenv";
+import { grabEnv } from "grabenv";
 
 /// Define the interface/type for your environment variables.
 /// This interface dictates which variables are optional or mandatory,
@@ -64,11 +64,11 @@ type Environments = {
   DATABASE_URL: string;
 };
 
-/// Use `grabEnvironments` with type inference to ensure type safety.
+/// Use `grabEnv` with type inference to ensure type safety.
 /// By passing the `Environments` type as a generic, TypeScript enforces
 /// type constraints on the configuration array, ensuring only valid
 /// variable names and types are used.
-const config = grabEnvironments<Environments>([
+const config = grabEnv<Environments>([
   /// Mandatory Variable ///
   { name: "DATABASE_URL", type: "string" },
 
