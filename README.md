@@ -26,12 +26,12 @@ Based on the value of the `NODE_ENV` environment variable, the appropriate envir
 
 ## Installation
 
-To get started, install `grabenv` using npm or yarn:
+To get started, install `@rajmazumder/grabenv` using npm or yarn:
 
 ```bash
-npm install grabenv
+npm install @rajmazumder/grabenv
 # or
-yarn add grabenv
+yarn add @rajmazumder/grabenv
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ DATABASE_URL=my_database_url
 **Configure and Use GrabEnv** in your `TypeScript` application:
 
 ```typescript
-import { grabEnv } from "grabenv";
+import { grabEnv } from "@rajmazumder/grabenv";
 
 /// Define the interface/type for your environment variables.
 /// This interface dictates which variables are optional or mandatory,
