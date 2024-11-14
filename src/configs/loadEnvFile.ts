@@ -2,8 +2,8 @@
 import path from "path";
 import { config } from "dotenv";
 
-/// Default to 'development' if NODE_ENV is not set
-const NODE_ENV = process.env["NODE_ENV"] || "development";
+/// Grab NODE_ENV
+const NODE_ENV = process.env["NODE_ENV"];
 
 /// Default to `.env`
 let envFile = ".env";
