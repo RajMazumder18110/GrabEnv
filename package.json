@@ -5,13 +5,38 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "environment",
+    "variables",
+    "typescript",
+    "dotenv",
+    "zod",
+    "validation",
+    "configuration",
+    "type-safe"
+  ],
   "author": "Raj Mazumder <rajmazumder27.08.2001@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RajMazumder18110/GrabEnv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RajMazumder18110/GrabEnv/issues"
+  },
+  "homepage": "https://github.com/RajMazumder18110/GrabEnv#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
@@ -24,5 +49,8 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
