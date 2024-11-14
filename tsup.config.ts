@@ -13,5 +13,4 @@ export default defineConfig({
   target: "es2020", // specify ECMAScript target version
   format: ["cjs", "esm"], // build both CommonJS and ESModule formats
   entry: ["src/index.ts"], // entry point for the project
-  external: ["dotenv", "zod"], // mark these as external dependencies
 });

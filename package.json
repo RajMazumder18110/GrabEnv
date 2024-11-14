@@ -53,6 +53,10 @@
     "dotenv": "^16.4.5",
     "zod": "^3.23.8"
   },
+  "optionalDependencies": {
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8"
+  },
   "engines": {
     "node": ">=18"
   }
