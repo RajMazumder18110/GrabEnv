@@ -1,5 +1,4 @@
 /** @notice library imports */
-import "dotenv/config";
 import { z, type ZodTypeAny } from "zod";
 /// Local imports
 import type { Configs, OutputVariables } from "./@types/environment";
