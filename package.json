@@ -29,9 +29,6 @@
   ],
   "author": "Raj Mazumder <rajmazumder27.08.2001@gmail.com>",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RajMazumder18110/GrabEnv.git"
