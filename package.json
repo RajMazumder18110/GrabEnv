@@ -44,13 +44,7 @@
     "husky": "^9.1.6",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "zod": "^3.23.8"
-  },
-  "optionalDependencies": {
+    "typescript": "^5.6.3",
     "dotenv": "^16.4.5",
     "zod": "^3.23.8"
   },
