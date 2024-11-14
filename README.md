@@ -47,7 +47,7 @@ Define your environment variables in a `.env` or `.env.x` file:
 DATABASE_URL=my_database_url
 ```
 
-**Configure and Use GrabEnv** in your `TypeScript/Javascript` application:
+**Configure and Use GrabEnv** in your `TypeScript` application:
 
 ```typescript
 import { grabEnv } from "grabenv";
@@ -66,26 +66,34 @@ type Environments = {
 
 /// Use `grabEnv` with type inference to ensure type safety.
 /// By passing the `Environments` type as a generic, TypeScript enforces
-/// type constraints on the configuration array, ensuring only valid
+/// type constraints on the configuration, ensuring only valid
 /// variable names and types are used.
-const config = grabEnv<Environments>([
+const config = grabEnv<Environments>({
   /// Mandatory Variable ///
-  { name: "DATABASE_URL", type: "string" },
+  DATABASE_URL: {
+    type: "string",
+  },
 
   /// Optional Variables ///
   /// For optional keys, `defaultValue` is required to provide a fallback
   /// if the environment variable is not set. TypeScript will enforce this rule
   /// based on the `Environments` type definition.
-  { name: "PORT", type: "number", defaultValue: 3000 },
-  { name: "ENABLE_LOGGING", type: "boolean", defaultValue: true },
-]);
+  PORT: {
+    type: "number",
+    defaultValue: 3000,
+  },
+  ENABLE_LOGGING: {
+    type: "boolean",
+    defaultValue: true,
+  },
+});
 
 /// Safely access validated and parsed environment variables.
 /// TypeScript guarantees that these variables are correctly typed
 /// and accessible as per the `Environments` type.
-console.log(config.DATABASE_URL); // Access mandatory variable
-console.log(config.PORT); // Access optional variable with default value if not set
-console.log(config.ENABLE_LOGGING); // Access optional variable with default value if not set
+console.log(config.DATABASE_URL); // Access mandatory variable.
+console.log(config.PORT); // Access optional variable with default value.
+console.log(config.ENABLE_LOGGING); // Access optional variable with default value.
 ```
 
 ## Why GrabEnv?
