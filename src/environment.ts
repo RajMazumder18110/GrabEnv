@@ -4,7 +4,7 @@ import { z, ZodError, type ZodTypeAny } from "zod";
 /// Local imports
 import type { Configs, OutputVariables } from "./@types/environment";
 
-export function grabEnvironments<T>(configs: Configs<T>): OutputVariables<T> {
+export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
   // Build the Zod schema dynamically based on the provided variable configurations
   const schema = Object.keys(configs).reduce((prevSchema, variableKey) => {
     let zodType: ZodTypeAny;
