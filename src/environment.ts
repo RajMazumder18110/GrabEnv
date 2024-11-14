@@ -1,8 +1,9 @@
 /** @notice library imports */
 import "dotenv/config";
-import { z, ZodError, type ZodTypeAny } from "zod";
+import { z, type ZodTypeAny } from "zod";
 /// Local imports
 import type { Configs, OutputVariables } from "./@types/environment";
+import { GrabEnvInvalidTypeError, GrabEnvValidationError } from "./errors";
 
 export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
   // Build the Zod schema dynamically based on the provided variable configurations
@@ -22,7 +23,7 @@ export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
         zodType = z.coerce.boolean();
         break;
       default:
-        throw new Error(`[UNSUPPORTED_TYPE]: ${variable.type}`);
+        throw new GrabEnvInvalidTypeError(variable.type);
     }
 
     // Apply default value if provided
@@ -41,16 +42,11 @@ export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
     NODE_ENV: z.enum(["development", "production"]).default("development"),
   });
 
-  try {
-    // Parse and return the validated environment variables with the inferred type
-    return nodeEnvIncludedSchema.parse(process.env) as OutputVariables<T>;
-  } catch (error) {
-    if (error instanceof ZodError) {
-      console.error(
-        "Environment variable validation error:",
-        error.flatten().fieldErrors
-      );
-    }
-    process.exit(1);
+  // Parse and check if it's valid else throw Error
+  const parsedValues = nodeEnvIncludedSchema.safeParse(process.env);
+  if (!parsedValues.success) {
+    throw new GrabEnvValidationError(parsedValues.error.flatten().fieldErrors);
   }
+  /// Return the validated environment variables with the inferred type
+  return parsedValues.data as OutputVariables<T>;
 }
