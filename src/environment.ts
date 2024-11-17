@@ -47,5 +47,5 @@ export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
     throw new GrabEnvValidationError(parsedValues.error.flatten().fieldErrors);
   }
   /// Return the validated environment variables with the inferred type
-  return parsedValues.data as OutputVariables<T>;
+  return Object.freeze(parsedValues.data) as OutputVariables<T>;
 }
