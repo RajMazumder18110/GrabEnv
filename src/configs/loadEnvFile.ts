@@ -13,8 +13,8 @@ if (NODE_ENV === "production") {
   envFile = ".env.production";
 } else if (NODE_ENV === "development") {
   envFile = ".env.development";
-} else if (NODE_ENV === "testing") {
-  envFile = ".env.testing";
+} else if (NODE_ENV === "test") {
+  envFile = ".env.test";
 }
 
 /// Load the appropriate file
