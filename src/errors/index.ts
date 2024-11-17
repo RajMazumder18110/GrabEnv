@@ -29,3 +29,12 @@ export class GrabEnvInvalidTypeError extends GrabEnvValidationError {
     this.name = "GrabEnvInvalidType";
   }
 }
+
+export class GrabEnvFileNotFound extends GrabEnvValidationError {
+  constructor() {
+    super({
+      [process.cwd()]: [`Environment file not found :(. tried [.env]`],
+    });
+    this.name = "GrabEnvFileNotFound";
+  }
+}

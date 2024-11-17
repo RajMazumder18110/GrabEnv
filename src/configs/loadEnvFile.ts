@@ -1,6 +1,8 @@
 /** @notice library imports */
 import path from "path";
 import { config } from "dotenv";
+/// Local imports
+import { GrabEnvFileNotFound } from "../errors";
 
 /// Grab NODE_ENV
 const NODE_ENV = process.env["NODE_ENV"];
@@ -22,8 +24,11 @@ const result = config({
 
 /// If loading fails, fallback to `.env` (it is loaded by default)
 if (result.error) {
-  console.error(`Error loading .env file: ${result.error.message}`);
-  console.log(`Falling back to .env`);
+  console.error(`Error loading .${envFile} file: ${result.error.message}`);
+  console.log(`Trying (.env)...`);
   /// Fallback to default .env
-  config();
+  const fallbackLoadResult = config();
+  if (fallbackLoadResult.error) {
+    throw new GrabEnvFileNotFound();
+  }
 }
