@@ -38,7 +38,9 @@ export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
   /// Include NODE_ENV
   const nodeEnvIncludedSchema = z.object({
     ...schema,
-    NODE_ENV: z.enum(["development", "production"]).default("development"),
+    NODE_ENV: z
+      .enum(["development", "production", "testing"])
+      .default("development"),
   });
 
   // Parse and check if it's valid else throw Error
