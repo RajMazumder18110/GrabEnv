@@ -7,7 +7,7 @@ GrabEnv is a lightweight utility designed to simplify the validation, parsing, a
 - **Type-Safe Environment Variables**: Enforce strict type constraints on environment variables.
 - **Schema-Based Validation**: Leverage `Zod` to validate each variable based on type.
 - **Default Values for Optional Variables**: Assign default values to optional variables for stable configurations.
-- **Automatic `.env` Loading**: Uses `dotenv` to automatically load variables from `.env files`, with support for loading environment-specific files like `.env.development` or `.env.production` based on the `NODE_ENV`.
+- **Automatic `.env` Loading**: Uses `dotenv` to automatically load variables from `.env files`, with support for loading environment-specific files like `.env.development`, `.env.production` or `.env.test` based on the `NODE_ENV`.
 - **Clear Error Handling**: Detailed error messages simplify troubleshooting.
 
 ## Loading Environment Variables
@@ -16,13 +16,15 @@ Based on the value of the `NODE_ENV` environment variable, the appropriate envir
 
 - **For `NODE_ENV=production`**: Loads `.env.production`.
 - **For `NODE_ENV=development`**: Loads `.env.development`.
+- **For `NODE_ENV=test`**: Loads `.env.test`.
 - **If `NODE_ENV` is not set or is set to any other value (e.g., `development`)**: Defaults to loading `.env`.
 
 ### File Loading Priority
 
 1. `.env.production`: Used when `NODE_ENV=production`.
 2. `.env.development`: Used when `NODE_ENV=development`.
-3. `.env`: Used as a fallback when no specific environment file is found or when `NODE_ENV` is not set.
+3. `.env.test`: Used when `NODE_ENV=test`.
+4. `.env`: Used as a fallback when no specific environment file is found or when `NODE_ENV` is not set.
 
 ## Installation
 

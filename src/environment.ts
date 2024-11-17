@@ -39,7 +39,7 @@ export function grabEnv<T>(configs: Configs<T>): OutputVariables<T> {
   const nodeEnvIncludedSchema = z.object({
     ...schema,
     NODE_ENV: z
-      .enum(["development", "production", "testing"])
+      .enum(["development", "production", "test"])
       .default("development"),
   });
 
