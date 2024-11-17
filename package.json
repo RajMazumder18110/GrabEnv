@@ -1,7 +1,7 @@
 {
   "name": "@rajmazumder/grabenv",
   "description": "GrabEnv is a lightweight, developer-friendly utility for validating, parsing, and managing environment variables in TypeScript apps. Combining dotenv for seamless loading and Zod for schema-based validation, it offers type-safe, reliable configuration management, reducing errors from missing or mistyped variables.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
