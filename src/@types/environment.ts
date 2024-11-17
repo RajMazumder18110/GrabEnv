@@ -9,7 +9,7 @@ type CastType<Type> = Exclude<Type, undefined> extends string
 export type OutputVariables<T> = {
   [K in keyof T]-?: T[K];
 } & {
-  NODE_ENV: "development" | "production";
+  NODE_ENV: "development" | "production" | "test";
 };
 
 export type Configs<T> = {
